@@ -45,3 +45,5 @@ pnpm run dev:web     # terminal 3
 Hardhat’s first account (`0xf39Fd…`) holds the full ACE supply after deploy.
 
 _Release test: 00:38:17_
+
+_PaaS release test 00:41:59_
