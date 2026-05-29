@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+artifacts/
+cache/
+coverage/
+.env
+.env.*
+!.env.example
+.ace/
+.DS_Store
+*.log
+pnpm-debug.log*
+typechain-types/
