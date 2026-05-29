@@ -3,6 +3,9 @@
   "version": 3,
   "name": "blockchain-starter",
   "description": "Blockchain (EVM) starter — local Hardhat chain + indexer API + React wallet UI. Services are added by the DevLay agent during the build.",
+  "instance_init": {
+    "setup_script": "ace-setup.sh"
+  },
   "stack": {
     "languages": ["typescript", "solidity"],
     "framework": "hardhat+react"
