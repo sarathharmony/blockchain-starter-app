@@ -10,10 +10,36 @@ Customers create their own copy with:
 ace createapp blockchain-starter
 ```
 
-## Services
+## Monorepo layout
 
-Services live in `ace.json` under `services[]`. Editing `ace.json` in local mode
-auto-reloads the stack via the ACE engine (rediscovers + restarts services).
+| Path | Role |
+|------|------|
+| `contracts/` | Hardhat + AceToken (ERC-20, 1M ACE to deployer) |
+| `services/chain/` | Hardhat node `:8545` + deploy → `deployments/local.json` |
+| `services/api/` | Express API `:4002` |
+| `apps/web/` | React + Vite UI `:5174` |
 
-> This repo starts intentionally minimal — the app (contracts, chain node, API,
-> and web UI) is built by the DevLay agent.
+```bash
+pnpm install
+pnpm run build:contracts   # compile Solidity once
+```
+
+Services are declared in `ace.json`; the ACE engine starts them in local mode.
+
+## Services (ports)
+
+| Service | Port | Type |
+|---------|------|------|
+| chain | 8545 | worker |
+| api | 4002 | server (`GET /api/health`) |
+| web | 5174 | static |
+
+Manual dev (if not using the engine):
+
+```bash
+pnpm run dev:chain   # terminal 1 — wait for deploy
+pnpm run dev:api     # terminal 2
+pnpm run dev:web     # terminal 3
+```
+
+Hardhat’s first account (`0xf39Fd…`) holds the full ACE supply after deploy.

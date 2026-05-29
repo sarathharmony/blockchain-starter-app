@@ -1,0 +1,18 @@
+{
+  "name": "blockchain-starter-app",
+  "private": true,
+  "scripts": {
+    "dev:chain": "pnpm --filter @blockchain-starter/chain start",
+    "dev:api": "pnpm --filter @blockchain-starter/api start",
+    "dev:web": "pnpm --filter @blockchain-starter/web dev",
+    "build:contracts": "pnpm --filter @blockchain-starter/contracts compile",
+    "build:api": "pnpm --filter @blockchain-starter/api build",
+    "build:web": "pnpm --filter @blockchain-starter/web build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "keccak", "secp256k1"]
+  }
+}

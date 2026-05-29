@@ -8,5 +8,31 @@
     "framework": "hardhat+react"
   },
   "deployment_strategy": "progressive",
-  "services": []
+  "services": [
+    {
+      "name": "chain",
+      "type": "worker",
+      "language": "typescript",
+      "command": "pnpm --filter @blockchain-starter/chain start",
+      "port": 8545,
+      "description": "Local Hardhat node with AceToken auto-deploy on boot"
+    },
+    {
+      "name": "api",
+      "type": "server",
+      "language": "typescript",
+      "command": "pnpm --filter @blockchain-starter/api start",
+      "port": 4002,
+      "health_check": "/api/health",
+      "description": "REST API — token info and balance lookup via ethers"
+    },
+    {
+      "name": "web",
+      "type": "static",
+      "language": "typescript",
+      "command": "pnpm --filter @blockchain-starter/web dev",
+      "port": 5174,
+      "description": "React + Vite UI for token info and balance lookup"
+    }
+  ]
 }
